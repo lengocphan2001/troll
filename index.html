@@ -1,21 +1,143 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anh còn nhắn tin với ai không ?</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&amp;display=swap" rel="stylesheet">
-  </head>
-  <body>
+    <title>Anh còn nhắn tin với ai không ?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Baloo 2", cursive;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: rgba(241, 225, 225, 0.493);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.7em;
+            color: #ff7e87;
+            margin: 15px 0;
+        }
+
+        h4 {
+            text-align: center;
+            font-size: 0.7em;
+            color: #e94d58;
+            margin: 15px 0;
+        }
+
+        .btn-group {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        button {
+            position: absolute;
+            width: 90px;
+            height: inherit;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 15px;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px gray;
+            border: 2px solid #e94d58;
+            font-size: 1.2em;
+            transition: left 0.3s ease, top 0.3s ease;
+        }
+
+        button:nth-child(1) {
+            margin-left: -100px;
+            background: #e94d58;
+            border: 2px solid #ffffff;
+        }
+
+        button:nth-child(2) {
+            margin-right: -100px;
+            background: white;
+            color: #e94d58;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gif {
+            width: 40%;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
     <div class="wrapper">
-      <h2 class="question">Con cu của PATI LÊ có to khum THU HỒNG ? </h2>
-      <h4 class="question-prompt">
-       Khai thật đi anh, anh không giận đâu, anh chỉ muốn biết thôi=))
-      </h4>
-      <img class="gif" alt="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3djg2OG9qNTN4MGgxbGd0amZhZG83djlxYjh3ZXBneWcwZXJnOHVqeiZlcD12MV9zdGlja2Vyc19yZWxhdGVkJmN0PXM/2weSkZg9hvQW5Zv2fk/giphy.gif">
-      <div class="btn-group">
-        <button class="yes-btn">Cực khủng</button>
-        <button class="no-btn" style="left: 493px; top: 171px;">Nhỏ xíu xiu</button>
-      </div>
+        <h2 class="question">Con cu của PATI LÊ có to khum THU HỒNG ? </h2>
+        <h4 class="question-prompt">
+            Khai thật đi anh, anh không giận đâu, anh chỉ muốn biết thôi=))
+        </h4>
+        <img class="gif" alt="gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3djg2OG9qNTN4MGgxbGd0amZhZG83djlxYjh3ZXBneWcwZXJnOHVqeiZlcD12MV9zdGlja2Vyc19yZWxhdGVkJmN0PXM/2weSkZg9hvQW5Zv2fk/giphy.gif">
+        <div class="btn-group">
+            <button class="yes-btn">Cực khủng</button>
+            <button class="no-btn" style="left: 493px; top: 171px;">Nhỏ xíu xiu</button>
+        </div>
     </div>
-    <script src="script.js"></script>
-</body></html>
+    <script>
+        const wrapper = document.querySelector(".wrapper");
+        const question = document.querySelector(".question");
+        const gif = document.querySelector(".gif");
+        const yesBtn = document.querySelector(".yes-btn");
+        const noBtn = document.querySelector(".no-btn");
+        const questionPrompt = document.querySelector(".question-prompt");
+
+        yesBtn.addEventListener("click", () => {
+            question.innerHTML = "Mày tới công chiện với ông rồi=))<br>";
+            
+            gif.src = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OXk0cDlwNjc3ZHhzMnAzYWpxOTdpZzAweTVta3M2ajZvOGUzemozZiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MFkTITj69pMOPlbfeX/giphy.gif";
+
+            // Ẩn cả hai nút Yes và No
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+            questionPrompt.style.display = "none"; 
+        });
+
+        noBtn.addEventListener("mouseover", () => {
+            const noBtnRect = noBtn.getBoundingClientRect();
+            const maxX = window.innerWidth - noBtnRect.width;
+            const maxY = window.innerHeight - noBtnRect.height;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        });
+
+        // Thêm sự kiện cho mobile
+        noBtn.addEventListener("touchstart", () => {
+            const noBtnRect = noBtn.getBoundingClientRect();
+            const maxX = window.innerWidth - noBtnRect.width;
+            const maxY = window.innerHeight - noBtnRect.height;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        });
+    </script>
+</body>
+</html>
