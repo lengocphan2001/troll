@@ -6,14 +6,14 @@ const noBtn = document.querySelector(".no-btn");
 const questionPrompt = document.querySelector(".question-prompt"); // Thêm đoạn này
 
 yesBtn.addEventListener("click", () => {
-  question.innerHTML = "Mày tới công chiện với bà mày rồi=))<br>";
+  question.innerHTML = "Mày tới công chiện với ông rồi=))<br>";
   
   gif.src = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OXk0cDlwNjc3ZHhzMnAzYWpxOTdpZzAweTVta3M2ajZvOGUzemozZiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MFkTITj69pMOPlbfeX/giphy.gif";
 
   // Ẩn cả hai nút Yes và No
   yesBtn.style.display = "none";
   noBtn.style.display = "none";
-  questionPrompt.style.display = "none"; // Ẩn dòng chữ khi người dùng nhấn vào nút Yes
+  questionPrompt.style.display = "none"; 
 });
 
 noBtn.addEventListener("mouseover", () => {
